@@ -1,0 +1,5 @@
+import REAL_CLIENTS_DATA, { CLIENT_NAMES as IMPORTED_CLIENT_NAMES } from './clientsData.js';
+
+export const CLIENT_NAMES = IMPORTED_CLIENT_NAMES;
+
+export const CLIENTS = REAL_CLIENTS_DATA;
