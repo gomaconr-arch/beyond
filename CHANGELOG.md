@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.8] - 2026-05-02
+
+### Changed
+- Updated `wrangler.toml` project name to `beyond` (`name = 'beyond'`) to match Cloudflare naming expectations
+- Aligned Cloudflare deploy scripts in `package.json` to target `--project-name beyond` for both production and preview deploy commands
+
 ## [1.4.7] - 2026-05-02
 
 ### Changed
