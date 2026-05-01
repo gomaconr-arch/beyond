@@ -1,14 +1,14 @@
 {
   "name": "beyond-app",
   "private": true,
-  "version": "1.4.8",
+  "version": "1.4.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "build:cloudflare": "npm run build",
     "cf:login": "wrangler login",
-    "deploy:cloudflare": "npm run build && wrangler pages deploy dist --project-name beyond",
+    "deploy:cloudflare": "npm run build && node scripts/cf-deploy.js",
     "deploy:cloudflare:preview": "npm run build && wrangler pages deploy dist --project-name beyond --branch preview",
     "lint": "eslint .",
     "preview": "vite preview"
