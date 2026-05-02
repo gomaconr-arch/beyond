@@ -9,7 +9,20 @@
 /* global process */
 import { execSync } from "child_process";
 
-if (process.env.CF_PAGES === "1") {
+function isTruthyEnv(value) {
+  if (value == null) return false;
+  const normalized = String(value).trim().toLowerCase();
+  return normalized !== "" && normalized !== "0" && normalized !== "false" && normalized !== "no";
+}
+
+const runningInCloudflarePages =
+  isTruthyEnv(process.env.CF_PAGES) ||
+  Boolean(process.env.CF_PAGES_URL) ||
+  Boolean(process.env.CF_PAGES_BRANCH) ||
+  Boolean(process.env.CF_PAGES_COMMIT_SHA) ||
+  process.env.CI_RUNNER === "cloudflare";
+
+if (runningInCloudflarePages) {
   console.log(
     "[cf-deploy] Running inside Cloudflare Pages — skipping wrangler deploy (platform handles this automatically)."
   );

@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.10] - 2026-05-02
+
+### Changed
+- Fixed Cloudflare Pages deploy helper detection in `scripts/cf-deploy.js` by treating `CF_PAGES` as truthy across values (not only `"1"`) and adding fallback checks for Pages runtime variables (`CF_PAGES_URL`, `CF_PAGES_BRANCH`, `CF_PAGES_COMMIT_SHA`)
+- Prevented `wrangler pages deploy` from running inside Cloudflare Pages build/deploy environments so dashboard deploy command no longer fails with API auth error `10000`
+
+## [1.4.9] - 2026-05-02
+
+### Changed
+- Added `scripts/cf-deploy.js` and updated `deploy:cloudflare` script to route deployment through a helper script, enabling conditional behavior for local/CI deploy contexts
+
 ## [1.4.8] - 2026-05-02
 
 ### Changed
