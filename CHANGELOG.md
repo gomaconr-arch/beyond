@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.11] - 2026-05-02
+
+### Changed
+- Updated Cloudflare deploy behavior to be fail-safe in hosted Pages builds: `deploy:cloudflare` now skips wrangler deployment by default through `scripts/cf-deploy.js`
+- Added explicit manual deployment scripts requiring force flag semantics:
+  - `deploy:cloudflare:manual`
+  - `deploy:cloudflare:preview:manual`
+- Prevented repeated Cloudflare Pages failures caused by running `wrangler pages deploy` inside the Pages deploy-command phase
+
 ## [1.4.10] - 2026-05-02
 
 ### Changed

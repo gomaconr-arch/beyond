@@ -9,22 +9,9 @@
 /* global process */
 import { execSync } from "child_process";
 
-function isTruthyEnv(value) {
-  if (value == null) return false;
-  const normalized = String(value).trim().toLowerCase();
-  return normalized !== "" && normalized !== "0" && normalized !== "false" && normalized !== "no";
-}
-
-const runningInCloudflarePages =
-  isTruthyEnv(process.env.CF_PAGES) ||
-  Boolean(process.env.CF_PAGES_URL) ||
-  Boolean(process.env.CF_PAGES_BRANCH) ||
-  Boolean(process.env.CF_PAGES_COMMIT_SHA) ||
-  process.env.CI_RUNNER === "cloudflare";
-
-if (runningInCloudflarePages) {
+if (process.env.FORCE_WRANGLER_DEPLOY !== "1") {
   console.log(
-    "[cf-deploy] Running inside Cloudflare Pages — skipping wrangler deploy (platform handles this automatically)."
+    "[cf-deploy] Skipping wrangler deploy by default. Cloudflare Pages already deploys build output automatically. Set FORCE_WRANGLER_DEPLOY=1 to run manual wrangler deployment."
   );
   process.exit(0);
 }
